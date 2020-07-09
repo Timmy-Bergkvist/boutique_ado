@@ -3,6 +3,12 @@
 import os
 import sys
 
+from os import path
+if path.exists("env.py"):
+    import env
+
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'boutique_ado.settings')
