@@ -14,6 +14,8 @@ def checkout(requset):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
+        'stripe_public_key': '<put your public key here>',
+        'client_secret': 'test client secret',
     }
 
     return render(requset, template, context)
