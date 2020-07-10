@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
-
+'''
 development = os.environ.get('DEVELOPMENT', False)
-
+'''
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,13 +26,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+if os.environ.get("DEVELOPMENT"):
+    development = True
+else:
+    development = False
 DEBUG = development
 
-if development:
-    ALLOWED_HOSTS = ['localhost']
-else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
+'''
+ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+
+localhost = os.environ.get("LOCALHOST")
+ALLOWED_HOSTS = [localhost, "myherokuapphost"]
+'''
 
 # Application definition
 
