@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7+b@=d*g%zm%&7yv42yki9y@i98rspjbgs-d!_54i1umktq-tn'
+SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['boutique-ado-app.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -126,7 +126,7 @@ DATABASES = {
 }
 '''
 DATABASES = {
-    'default': dj_database_url.parse('postgres://ovssrqjczrxgpd:5b1feeffc7dc3e395405bb01e44b36ab4830b8022e01337e5a7ec8b1930bd521@ec2-54-247-103-43.eu-west-1.compute.amazonaws.com:5432/d1pl13i16e2164')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
