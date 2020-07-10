@@ -26,6 +26,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+'''
+DEBUG = True
+
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 DEBUG = 'DEVELOPMENT' in os.environ
 
 if os.environ.get("DEVELOPMENT"):
@@ -34,7 +42,7 @@ else:
     development = False
 
 ALLOWED_HOSTS = ['boutique-ado-app.herokuapp.com', 'localhost']
-
+'''
 
 # Application definition
 
@@ -124,6 +132,15 @@ WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+'''
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
@@ -135,6 +152,7 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+'''
 
 
 # Password validation
