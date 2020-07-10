@@ -36,10 +36,10 @@ DEBUG = development
 '''
 ALLOWED_HOSTS = ['localhost']
 ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
-
-localhost = os.environ.get("LOCALHOST")
-ALLOWED_HOSTS = [localhost, "myherokuapphost"]
 '''
+localhost = os.environ.get("LOCALHOST")
+ALLOWED_HOSTS = [localhost, "HEROKU_HOSTNAME"]
+
 
 # Application definition
 
